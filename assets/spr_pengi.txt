@@ -1,0 +1,17 @@
+cell 84 64 12
+anim 0 0 4 12 1
+anim 1 4 6 6 1
+anim 2 10 6 4 1
+anim 3 16 3 6 0
+anim 4 19 2 5 0
+anim 5 21 2 8 1
+anim 6 23 8 2 1
+anim 7 31 2 8 1
+anim 8 33 4 10 1
+anim 9 37 4 8 1
+anim 10 41 8 3 0
+anim 11 49 9 3 0
+anim 12 58 12 4 0
+anim 13 70 3 7 0
+anim 14 73 8 7 0
+anim 15 81 7 7 0

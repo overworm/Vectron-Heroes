@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.10)
+project(lostgame C)
+set(CMAKE_C_STANDARD 99)
+
+set(CORE src/main.c src/game.c src/ai.c src/boss.c src/events.c src/actor.c src/rig.c src/rig_anims.c src/level.c src/image.c src/ui.c)
+if(NOT WIN32)
+  link_libraries(m)
+endif()
+
+# Безоконная сборка (автотесты, CI): работает без SDL
+add_executable(lostgame_headless ${CORE} src/platform_null.c)
+target_compile_definitions(lostgame_headless PRIVATE PLAT_FIXED_STEP)
+
+# Игра на SDL2. Windows: cmake -DSDL2_DIR=<путь к SDL2 с sdl2-config.cmake> .. (или vcpkg: sdl2)
+find_package(SDL2 CONFIG QUIET)
+if(SDL2_FOUND)
+  add_executable(lostgame ${CORE} src/platform_sdl.c)
+  if(TARGET SDL2::SDL2)
+    target_link_libraries(lostgame PRIVATE SDL2::SDL2)
+  else()
+    target_include_directories(lostgame PRIVATE ${SDL2_INCLUDE_DIRS})
+    target_link_libraries(lostgame PRIVATE ${SDL2_LIBRARIES})
+  endif()
+else()
+  message(STATUS "SDL2 not found: building only lostgame_headless")
+endif()

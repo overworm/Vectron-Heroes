@@ -1,0 +1,4 @@
+v97 (поверх вашей сборки из mapper_tools.zip с моим v96)
+Изменены: src/ai.c game.c game_priv.h actor.h actor.c boss.c level.c level.h
+          tools/mapc.py, новые tools/mapedit.py tools/mapedit.html, maps/*.json|.map, lhmp/, README.md
+См. раздел v97 в README.md.
